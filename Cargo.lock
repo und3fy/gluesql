@@ -1066,21 +1066,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gluesql-kv-storage"
-version = "0.14.0"
-dependencies = [
- "async-trait",
- "gloo-storage",
- "gluesql-core",
- "gluesql-test-suite",
- "serde",
- "uuid",
- "wasm-bindgen-test",
- "web-sys",
- "worker",
-]
-
-[[package]]
 name = "gluesql-shared-memory-storage"
 version = "0.14.0"
 dependencies = [
@@ -1128,6 +1113,21 @@ dependencies = [
  "uuid",
  "wasm-bindgen-test",
  "web-sys",
+]
+
+[[package]]
+name = "gluesql-workers-storage"
+version = "0.14.0"
+dependencies = [
+ "async-trait",
+ "gloo-storage",
+ "gluesql-core",
+ "gluesql-test-suite",
+ "serde",
+ "uuid",
+ "wasm-bindgen-test",
+ "web-sys",
+ "worker",
 ]
 
 [[package]]

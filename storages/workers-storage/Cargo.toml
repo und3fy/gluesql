@@ -1,5 +1,5 @@
 [package]
-name = "gluesql-kv-storage"
+name = "gluesql-workers-storage"
 authors = ["Und3fy <me@und3fy.dev>"]
 version.workspace = true
 edition.workspace = true
