@@ -29,38 +29,24 @@ pub struct WorkersStorage {
 }
 
 impl WorkersStorage {
-    pub fn new(env: worker::Env, bucket: &str) -> Result<Self> {
-        let bucket = env.bucket(bucket).unwrap();
-        Ok(Self { bucket })
+    pub fn new(env: &worker::Env, bucket_name: &str) -> Result<Self> {
+        let bucket = env.bucket(bucket_name);
+        match bucket {
+            Ok(bucket) => Ok(Self { bucket }),
+            Err(_) => Err(Error::StorageMsg(
+                WorkersStorageError::BucketNotFound.to_string(),
+            )),
+        }
     }
 
     fn fetch_schema(&self, table_name: &str) -> Result<Option<Schema>> {
         let key = format!("gluesql/schema/{}", table_name);
-        let result = self.bucket.get(key).execute();
+        let result = self.bucket.get(&key);
         match result {
-            Ok(value) => {
-                let schema = value.unwrap();
-
-                // let schema = value
-                //     .map(|v| bincode::deserialize(&v))
-                //     .transpose()
-                //     .map_err(err_into)
-                //     .map_err(ConflictableTransactionError::Abort)?;
-                // Ok(schema)
-            }
+            Ok(value) => {}
             Err(_) => Err(Error::StorageMsg(
                 WorkersStorageError::KeyNotFound.to_string(),
             )),
         }
-
-        // let key = format!("schema/{}", table_name);
-        // let value = tree.get(key.as_bytes())?;
-        // let schema_snapshot = value
-        //     .map(|v| bincode::deserialize(&v))
-        //     .transpose()
-        //     .map_err(err_into)
-        //     .map_err(ConflictableTransactionError::Abort)?;
-
-        // Ok((key, schema_snapshot))
     }
 }
