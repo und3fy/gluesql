@@ -1,0 +1,7 @@
+{
+  "language_overrides": {
+    "Rust": {
+      "tab_size": 4
+    }
+  }
+}

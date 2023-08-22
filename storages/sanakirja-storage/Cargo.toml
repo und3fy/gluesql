@@ -1,12 +1,19 @@
 [package]
 name = "sanakirja-storage"
-edition = "2021"
+authors = ["und3fy <me@und3fy.dev>"]
 version.workspace = true
+edition.workspace = true
 description.workspace = true
 license.workspace = true
 repository.workspace = true
 documentation.workspace = true
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+gluesql-core.workspace = true
+utils.workspace = true
+sanakirja = { version = "1.3.3", features = ["uuid"] }
+thiserror = "1.0.47"
+async-trait = "0.1.73"
+
+[dev-dependencies]
+test-suite.workspace = true
