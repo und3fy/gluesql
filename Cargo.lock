@@ -2054,7 +2054,9 @@ dependencies = [
  "gluesql-core",
  "gluesql-test-suite",
  "gluesql-utils",
+ "log",
  "sanakirja",
+ "serde",
  "thiserror",
 ]
 

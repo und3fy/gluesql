@@ -316,20 +316,12 @@ impl sanakirja::UnsizedStorable for SmallStr {
     }
     unsafe fn write_to_page(&self, p: *mut u8) {
         std::ptr::copy(&self.len, p, 1 + self.len as usize);
-        debug!(
-            "writing {:?}",
-            std::slice::from_raw_parts(p, 1 + self.len as usize)
-        );
     }
     unsafe fn from_raw_ptr<'a, T>(_: &T, p: *const u8) -> &'a Self {
         smallstr_from_raw_ptr(p)
     }
     unsafe fn onpage_size(p: *const u8) -> usize {
         let len = *p as usize;
-        debug!(
-            "onpage_size {:?}",
-            std::slice::from_raw_parts(p, 1 + len as usize)
-        );
         1 + len
     }
 }

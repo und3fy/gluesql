@@ -5,6 +5,7 @@ mod error;
 mod pristine;
 mod small_string;
 mod store;
+mod types;
 
 use {
     error::err_into,
@@ -24,16 +25,12 @@ pub struct SanakirjaStorage {
 
 impl SanakirjaStorage {
     pub fn new(path: PathBuf) -> Result<Self> {
-        fs::create_dir_all(path).unwrap();
+        fs::create_dir_all(&path).unwrap();
         let path = PathBuf::from(path);
         let db_path = path.join("pristine");
 
         let pristine = Pristine::new(db_path).map_err(err_into)?;
 
         Ok(Self { pristine })
-    }
-
-    fn fetch_schema(&self, table_name: &str) -> Result<Option<(Schema, bool)>> {
-        return Ok(None);
     }
 }

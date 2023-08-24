@@ -11,10 +11,6 @@ use {
     },
 };
 
-impl SanakirjaStorage {
-    const SCHEMA_PREFIX: &str = "schema_";
-}
-
 #[async_trait(?Send)]
 impl Store for SanakirjaStorage {
     async fn fetch_all_schemas(&self) -> Result<Vec<Schema>> {

@@ -14,6 +14,8 @@ utils.workspace = true
 sanakirja = { version = "1.3.3", features = ["uuid"] }
 thiserror = "1.0.47"
 async-trait = "0.1.73"
+serde = { version = "1.0.185", features = ["serde_derive"] }
+log = "0.4.20"
 
 [dev-dependencies]
 test-suite.workspace = true
