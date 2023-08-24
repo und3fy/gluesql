@@ -2051,9 +2051,11 @@ name = "sanakirja-storage"
 version = "0.14.0"
 dependencies = [
  "async-trait",
+ "bincode",
  "gluesql-core",
  "gluesql-test-suite",
  "gluesql-utils",
+ "lazy_static",
  "log",
  "sanakirja",
  "serde",

@@ -3,7 +3,6 @@
 
 mod error;
 mod pristine;
-mod small_string;
 mod store;
 mod types;
 
@@ -16,7 +15,6 @@ use {
     },
 };
 
-use gluesql_core::data::Schema;
 use pristine::Pristine;
 
 pub struct SanakirjaStorage {

@@ -51,7 +51,6 @@ impl Pristine {
         fn begin(txn: sTxn<Arc<sEnv>>) -> Option<Txn> {
             Some(Txn {
                 schemas: txn.root_db(Root::Schemas as usize)?,
-                counter: 0,
                 txn,
             })
         }
@@ -80,7 +79,6 @@ impl Pristine {
                 btree::create_db_(&mut txn)?
             },
             txn,
-            counter: 0,
         })
     }
 }
@@ -92,6 +90,4 @@ pub struct GenericTxn<T: LoadPage<Error = ::sanakirja::Error> + RootPage> {
     pub txn: T,
 
     pub schemas: btree::UDb<SmallStr, SerializedSchema>,
-
-    counter: usize,
 }
